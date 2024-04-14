@@ -1,15 +1,13 @@
-body {
-    font-family: Arial, sans-serif;
+#joke-container {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.product {
-    margin: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.product img {
-    width: 100px;
-    height: auto;
+.btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
 }

@@ -1,24 +1,16 @@
-import axios from 'axios';
+document.getElementById('joke-button').addEventListener('click', fetchJoke);
 
-const fetchProducts = async () => {
+async function fetchJoke() {
     try {
-        const response = await axios.get('https://fakestoreapi.com/products');
-        const products = response.data;
-        const container = document.getElementById('products-container');
-        products.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.className = 'product';
-            productDiv.innerHTML = `
-                <h3>${product.title}</h3>
-                <img src="${product.image}" alt="${product.title}">
-                <p>${product.description}</p>
-                <p><strong>$${product.price}</strong></p>
-            `;
-            container.appendChild(productDiv);
-        });
+        const response = await axios.get('https://api.chucknorris.io/jokes/random');
+        const joke = response.data.value;
+        document.getElementById('joke-container').innerHTML = joke;
     } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching joke:', error);
+        document.getElementById('joke-container').innerHTML = 'Failed to fetch joke!';
     }
-};
+}
 
-fetchProducts();
+// Carga inicial del chiste
+fetchJoke();
+
